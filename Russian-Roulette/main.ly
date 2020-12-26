@@ -1,23 +1,24 @@
 \version "2.20.0"
+#(set-global-staff-size 14)
 
-% This is my first score
-#(set-global-staff-size 20)
+\paper {
+  #(set-paper-size "letter")
+}
+
+\language "english"
 
 \header {
-  dedication = "2020"
   title = "Russian Roulette"
   instrument = "Guitar"
   composer = "Jack Savoretti"
+  arranger = "Wei"
+  copyright = "Wei"
 }
-
 
 global = {
   \key c \major
-  \time 6/8
-  \clef "treble"
   \numericTimeSignature
-  \compressFullBarRests
-  \tempo "Whistfully "
+  \tempo "Whistfully"
 }
 
 micl = "clarinet"
@@ -28,33 +29,49 @@ misx = "tenor sax"
 mist = "string ensemble 1"
 miba = "cello"
 mivs = "choir aahs"
+micg = "acoustic guitar (nylon)"
+    
 
-povo = \markup \italic "poco vib."
-
-\include "v1-1.ily"
+\include "v1.ily"
 \include "v2.ily"
+\include "v3.ily"
 
 \language "english"
 
+chordsPart = <<
+  \new ChordNames \chordNames
+>>
 
 music = \new StaffGroup <<
+     <<
+    \chordsPart
+  >>
       \new Staff {
-	\set Staff.midiInstrument = \mivs
-%	\set Staff.instrumentName = \markup \center-column { "Mezzo-" "soprano" }
+	\set Staff.midiInstrument = \mist
 	\new Voice = "mezzosoprano" {
 	  \va
         }
       }
 
-      \context Lyrics = "mezzosoprano" {
+      \new  Lyrics = "mezzosoprano" {
         \lyricsto "mezzosoprano" {
           \vb
         }
       }
+      
+      \new Lyrics = "mezzosoprano" {
+        \lyricsto "mezzosoprano" {
+          \vc
+        }
+      }
+
 >>
+
+
 
 \book {
   \score {
+
     \music
     \layout {}
   }
