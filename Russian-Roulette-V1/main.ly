@@ -1,5 +1,5 @@
 \version "2.20.0"
-#(set-global-staff-size 14)
+#(set-global-staff-size 20)
 
 \paper {
   #(set-paper-size "letter")
@@ -18,7 +18,7 @@
 global = {
   \key c \major
   \numericTimeSignature
-  \tempo "Whistfully"
+  \tempo "Whistfully" 8=190
 }
 
 micl = "clarinet"
@@ -47,7 +47,7 @@ music = \new StaffGroup <<
     \chordsPart
   >>
       \new Staff {
-	\set Staff.midiInstrument = \mist
+	\set Staff.midiInstrument = \micg
 	\new Voice = "mezzosoprano" {
 	  \va
         }
